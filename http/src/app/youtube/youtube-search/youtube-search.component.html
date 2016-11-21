@@ -1,21 +1,22 @@
-<div class='container'>
+<div class='ui container'>
   <div class="page-header">
     <h1>YouTube Search
       <img style="float: right;" *ngIf="loading" src='${loadingGif}' />
     </h1>
   </div>
-  <div class="row">
-    <div class="input-group input-group-lg col-md-12">
+  <div class="ui center aligned basic segment">
+    <div class="ui left icon action input">
       <search-box
           (loading)="loading = $event"
           (results)="updateResults($event)"> 
       </search-box>
     </div>
-    <div class="row">
-      <search-result 
-          *ngFor="let result of results"
-          [result]="result">
-      </search-result>
-    </div>
+  </div>
+  
+  <div class="ui three column grid">
+    <search-result 
+      *ngFor="let result of results"
+      [result]="result" class="column">
+    </search-result>
   </div>
 </div>

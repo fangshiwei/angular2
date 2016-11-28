@@ -1,0 +1,85 @@
+<h2 class="sub-header">药库管理</h2>
+<div class="btn-group btn-group-sm">
+    <!--
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#medAmt-add">
+        <span class="glyphicon glyphicon-plus"></span> 新增
+    </button>
+    -->
+    <form class="med-search">
+        <input type="text" class="input-sm" placeholder="输入药品名称" ng-model="medName">
+        <button type="button" class="btn btn-default btn-sm" ng-click="medicineSearch(medName)">
+            <span class="glyphicon glyphicon-search"></span> 搜索
+        </button>
+    </form>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#medAmt-export">
+        <span class="glyphicon glyphicon-export"></span> 导出入药房记录
+    </button>
+    <button type="button" class="btn btn-default btn-sm" ng-click="refresh()">
+        <span class="glyphicon glyphicon-refresh"></span> 刷新
+    </button>
+
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>药品名称</th>
+            <th>药品类型</th>
+            <th>药库量</th>
+            <th>药房量</th>
+            <th>单位</th>
+            <th>过期日期</th>
+            <th>存放位置</th>
+            <th>价格</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="medAmt in medAmts">
+            <td>{{medAmt.name}}</td>
+            <td>{{medAmt.type}}</td>
+            <td>{{medAmt.amountWarehouse}}</td>
+            <td>{{medAmt.amountStorehouse}}</td>
+            <td>{{medAmt.unit}}</td>
+            <td>{{medAmt.expiryDate | date : 'yyyy-MM-dd'}}</td>
+            <td>{{medAmt.place}}</td>
+            <td>{{medAmt.price}}</td>
+            <td>
+                <input type="text" class="input-sm" style="width:70px" placeholder="数量" ng-model="amount">
+                <button class="btn btn-primary btn-sm" ng-click="consume(medAmt,amount,'WARE_HS','STORE_HS')">
+                    <span class="glyphicon glyphicon-arrow-right"></span> 入药房
+                </button>
+                <button class="btn btn-primary btn-sm" ng-click="consume(medAmt,amount,'WARE_HS','CONSUME')">
+                    <span class="glyphicon glyphicon-arrow-right"></span> 消耗
+                </button>
+                <button class="btn btn-primary btn-sm" ng-click="editMedicineAmt(medAmt.medId)">
+                    <span class="glyphicon glyphicon-edit"></span> 编辑
+                </button>
+                <button class="btn btn-danger btn-sm" ng-click="delMedicineAmtModal(medAmt.medId,medAmt.name)">
+                    <span class="glyphicon glyphicon glyphicon-trash"></span> 删除
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<nav>
+    <ul class="pagination">
+        <li>
+            <button type="button" class="btn btn-info" ng-click="previous()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+        </li>
+        <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" >
+            <a ng-click="selectPage(page)" >{{ page }}</a>
+        </li>
+        <li>
+
+            <button type="button" class="btn btn-info" ng-click="next()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </li>
+        <span>一共{{ totalPage }}页/{{ totalCount }}条记录</span>
+        <span>当前第{{ currentPage }}页</span>
+    </ul>
+</nav>

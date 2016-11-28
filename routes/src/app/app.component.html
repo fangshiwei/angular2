@@ -1,12 +1,9 @@
 <div>
-  <nav>
-    <a>Navigation:</a>
-    <ul>
-      <li><a [routerLink]="['home']">Home</a></li>
-      <li><a [routerLink]="['about']">About</a></li>
-      <li><a [routerLink]="['contact']">Contact us</a></li>
-    </ul>
-  </nav>
+  <div class="ui three item menu">
+    <a [routerLink]="['home']" class="item">Home</a>
+    <a [routerLink]="['about']" class="item">About</a>
+    <a [routerLink]="['contact']" class="item">Contact us</a>
+  </div>
 
   <router-outlet></router-outlet>
 </div>

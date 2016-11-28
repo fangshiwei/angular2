@@ -2,7 +2,7 @@
 
 <form class="med-search">
     <input type="text" class="input-sm" placeholder="输入药品名称" #medName>
-    <button type="button" class="btn btn-default btn-sm" (onclick)="searchMedicine(medName)">
+    <button type="button" class="btn btn-default btn-sm" (click)="searchMedicine(medName.value)">
         <span class="glyphicon glyphicon-search"></span> 搜索
     </button>
 </form>
@@ -16,7 +16,7 @@
     <button type="button" class="btn btn-default btn-sm" (onclick)="exportAll()">
         <span class="glyphicon glyphicon-export"></span> 导出全部药品
     </button>
-    <button type="button" class="btn btn-default btn-sm" (onclick)="refresh()">
+    <button type="button" class="btn btn-default btn-sm" (click)="refresh()">
         <span class="glyphicon glyphicon-refresh"></span> 刷新
     </button>
 </div>

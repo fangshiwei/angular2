@@ -19,10 +19,10 @@ export class MedicineComponent implements OnInit {
   constructor(public medicineService: MedicineService) { }
 
   ngOnInit() {
-    this.searchMedicine();
+    this.queryMedicine();
   }
 
-  searchMedicine():void{
+  queryMedicine():void{
     this.medicineService.queryMedicine(this.isPagination, this.currentPage, this.pageSize)
       .subscribe((results: [number, number, Medicine[]]) => {
         this.totalCount = results[1];
@@ -36,13 +36,20 @@ export class MedicineComponent implements OnInit {
       }
     );
   }
+  refresh():void{
+    this.currentPage = 1;
+    this.queryMedicine();
+  }
+  searchMedicine(name: string):void{
+    console.log("searchMedicine:", name);
+  }
 
   previous():void{
     if(this.currentPage-1<=0){
       alert("this is first page");
     }else{
       this.currentPage--;
-      this.searchMedicine();
+      this.queryMedicine();
     }
   }
 
@@ -51,10 +58,7 @@ export class MedicineComponent implements OnInit {
       alert("this is last page");
     }else{
       this.currentPage ++ ;
-
-      console.log("current page:",  + this.currentPage);
-
-      this.searchMedicine();
+      this.queryMedicine();
     }
   }
 

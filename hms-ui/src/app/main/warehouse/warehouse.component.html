@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="medAmt in medAmts">
+        <tr *ngFor="let medAmt of medAmts">
             <td>{{medAmt.name}}</td>
             <td>{{medAmt.type}}</td>
             <td>{{medAmt.amountWarehouse}}</td>

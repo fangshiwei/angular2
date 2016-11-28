@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Medicine } from '../medicine/medicine';
 
 @Component({
   selector: 'app-warehouse',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./warehouse.component.css']
 })
 export class WarehouseComponent implements OnInit {
+  medAmts: Medicine[];
 
   constructor() { }
 

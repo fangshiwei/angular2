@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Medicine } from '../medicine/medicine';
 
 @Component({
   selector: 'app-storehouse',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./storehouse.component.css']
 })
 export class StorehouseComponent implements OnInit {
-
+  medAmts: Medicine[];
   constructor() { }
 
   ngOnInit() {

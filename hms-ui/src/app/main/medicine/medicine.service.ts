@@ -14,14 +14,15 @@ import {
 export class MedicineService {
   constructor(public http: Http) { }
 
-  queryMedicine(isPagination: string, page: number, pageSize: number) : Observable<[number, number, Medicine[]]>{
+  queryMedicine(isPagination: string, page: number, pageSize: number, name: string) : Observable<[number, number, Medicine[]]>{
 
     let queryUrl: string = 'http://localhost:8080/hms/medicineAmt/list';
     return this.http.post(queryUrl,
         {
           isPagination: isPagination,
           currentPage: page,
-          numPerPage: pageSize
+          numPerPage: pageSize,
+          name: name
         }
       ).map((response:Response)=>{
         var resJson = response.json();

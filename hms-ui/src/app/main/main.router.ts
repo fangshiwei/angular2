@@ -7,7 +7,7 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 
 
 export const mainRoutes: Routes = [
-    {path: '', component: MainComponent},
+    {path: '', redirectTo:'medicine',pathMatch: "full"},
     {path: 'medicine', component: MedicineComponent},
     {path: 'storehouse', component: StorehouseComponent},
     {path: 'warehouse', component: WarehouseComponent}

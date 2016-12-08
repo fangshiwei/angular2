@@ -1,5 +1,5 @@
 export class Medicine {
-    id: string;
+    medId: string;
     name: string;
     type: string;
     amountWarehouse: number; 
@@ -10,7 +10,7 @@ export class Medicine {
     price: number;
 
     constructor(obj?:any){
-        this.id = obj && obj.id || null;
+        this.medId = obj && obj.medId || null;
         this.name = obj && obj.name || null;
         this.type = obj && obj.type || null;
         this.amountWarehouse = obj && obj.amountWarehouse || null;

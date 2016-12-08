@@ -47,14 +47,14 @@
             <td>{{medAmt.place}}</td>
             <td>{{medAmt.price}}</td>
             <td>
-                <input type="text" class="input-sm" style="width:70px" placeholder="数量" #storeAmt>
-                <button class="btn btn-primary btn-sm" (onclick)="expToWareHouse(medAmt, storeAmt)">
+                <input type="number" class="input-sm" style="width:70px" placeholder="数量" #storeAmt>
+                <button class="btn btn-primary btn-sm" (click)="expToWareHouse(medAmt, storeAmt.value)">
                     <span class="glyphicon glyphicon-arrow-right"></span> 入药库
                 </button>
-                <button class="btn btn-primary btn-sm" (onclick)="editMedicineAmt(medAmt.medId)">
+                <button class="btn btn-primary btn-sm" (click)="editMedicineAmt(medAmt.medId)">
                     <span class="glyphicon glyphicon-edit"></span> 编辑
                 </button>
-                <button class="btn btn-danger btn-sm" (onclick)="delMedicineAmtModal(medAmt.medId,medAmt.name)">
+                <button class="btn btn-danger btn-sm" (click)="delMedicineAmtModal(medAmt.medId,medAmt.name)">
                     <span class="glyphicon glyphicon glyphicon-trash"></span> 删除
                 </button>
             </td>

@@ -64,9 +64,24 @@ export class MedicineComponent implements OnInit {
     }
   }
 
-  expToWareHouse(medAmt: Medicine, storeAmt: HTMLInputElement): boolean{
-    console.log(`Adding Medicine: ${storeAmt.value}`);
-    medAmt.amountStorehouse = 1 + (Number)(storeAmt.value);
+  expToWareHouse(medAmt: Medicine, storeAmt: any): boolean{
+    // console.log(`Adding Medicine: ${storeAmt}`);
+    if(medAmt.amountStorehouse==null){
+      medAmt.amountStorehouse = 0;
+    }
+    medAmt.amountStorehouse = medAmt.amountStorehouse + Number(storeAmt);
+    this.medicineService.expToWareHouse(medAmt)
+      .subscribe((result:boolean)=>{
+        if(result){
+          console.log("add success");
+        }else{
+          medAmt.amountStorehouse = medAmt.amountStorehouse - Number(storeAmt);
+        }
+      },
+      (err:any)=>{
+        console.log(err);
+      })
+    
     return false;
   }
 }
